@@ -1,0 +1,53 @@
+{
+  "version": "0.7.1",
+  "proposedName": "Scheduled And Recurring Payments Snap",
+  "description": "An example snap for storing address book entries.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Montoya/address-book-snap-tutorial.git"
+  },
+  "source": {
+    "shasum": "y+ARRpLpNzcxMoUJPSw3VgRQV52C3HJOcCEx+BkGInE=",
+    "location": {
+      "npm": {
+        "filePath": "dist/bundle.js",
+        "iconPath": "images/icon.svg",
+        "packageName": "@metamask/address-book-snap",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "snap_confirm": {},
+    "snap_manageState": {},
+    "endowment:cronjob": {
+      "jobs": [
+        {
+          "expression": "* * * * *",
+          "request": {
+            "method": "checkTransaction",
+            "params": {
+              "param1": "bar"
+            }
+          }
+        },
+        {
+          "expression": "* * * * *",
+          "request": {
+            "method": "recurringTransaction"
+          }
+        }
+      ]
+    },
+    "endowment:network-access": {},
+    "endowment:long-running": {},
+    "endowment:transaction-insight": {
+      "allowTransactionOrigin": true
+    },
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": true
+    }
+  },
+  "manifestVersion": "0.1"
+}
